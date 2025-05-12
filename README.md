@@ -1,18 +1,38 @@
-# GridScout AI
+# GridScout AI ⚡
 
-An AI-powered GIS tool for identifying and managing high-suitability parcels for energy storage development.
+[![Streamlit App](https://img.shields.io/badge/Live%20Demo-Open-green?logo=streamlit)]((https://gridscoutai-ahauz9mzzxpt7hxw7ymvrn.streamlit.app/))
+![MIT License](https://img.shields.io/badge/license-MIT-blue)
 
-## Folder Structure
+> **AI‑powered GIS tool** to discover, score, and manage high‑value land parcels for clean‑energy development (solar, battery storage, etc.).
 
-- `data/`: Raw GIS files
-- `scripts/`: Python tools for scoring, analysis
-- `notebooks/`: Experiments and demos
-- `templates/`: Contract and outreach letter templates
-- `outputs/`: Final parcel reports and exports
-- `config/`: API keys and project settings
+<p align="center">
+  <!-- Replace with your own image -->
+  <img src="assets/dashboard_screenshot.png" width="800" alt="GridScoutAI dashboard">
+</p>
 
-## Getting Started
+---
 
-1. Add parcel shapefiles to `data/`
-2. Run `scripts/parcel_score.py` to generate suitability scores
-3. View results in QGIS or export reports via Streamlit
+## Key Features
+
+| Feature | Description | Status |
+|---------|-------------|--------|
+| **Parcel Scoring** | Combines lot area, zoning compatibility, distance to substation, flood & wetlands risk | ✅ |
+| **Interactive Dashboard** | Streamlit map with filters, tooltips, data table | ✅ |
+| **Outreach Log** | Track landowner contacts and notes (CSV persistence) | ✅ |
+| **AI Letter Generator** | GPT‑powered personalized outreach letters | 🚧 Planned |
+| **Multi‑County Batch Processing** | Run scoring pipeline for any NJ county | 🚧 Roadmap |
+
+---
+
+## Quick Start (local)
+
+```bash
+git clone https://github.com/sadnomnom/GridScoutAI.git
+cd GridScoutAI
+
+# Install core dependencies
+pip install -r requirements.txt        # or: conda env create -f environment.yml
+
+# Launch the dashboard
+cd dashboard
+streamlit run app.py

@@ -10,6 +10,11 @@
 !dashboard/
 !dashboard/**
 
+# Keep screenshots / logos
+!assets/
+!assets/**
+
+
 # ---- optional extras you might want to keep ----
 # !clean_repo.py
 # !LICENSE
