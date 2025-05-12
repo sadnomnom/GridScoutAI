@@ -1,0 +1,16 @@
+# Ignore EVERYTHING by default
+*
+
+# ⬇️ Un‑ignore these root‑level files so they stay in the repo
+!.gitignore
+!README.md
+!requirements.txt
+
+# ⬇️ Un‑ignore the dashboard folder and all its contents
+!dashboard/
+!dashboard/**
+
+# ---- optional extras you might want to keep ----
+# !clean_repo.py
+# !LICENSE
+# !environment.yml
