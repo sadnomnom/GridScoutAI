@@ -1,1 +1,2 @@
+*.gpkg filter=lfs diff=lfs merge=lfs -text
 dashboard/data/burlington_scored.gpkg filter=lfs diff=lfs merge=lfs -text
