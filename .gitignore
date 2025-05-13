@@ -6,6 +6,7 @@
 !README.md
 !requirements.txt
 !LICENSE
+!gitattributes
 
 # ⬇️ Un‑ignore the dashboard folder and all its contents
 !dashboard/
