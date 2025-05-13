@@ -6,14 +6,17 @@ from pathlib import Path
 from datetime import datetime
 
 # ----------------------------------------------------------------------------
-# Resolve paths (works locally & on Streamlit Cloud)
+# Path setup (works locally & on Streamlit Cloud)
 # ----------------------------------------------------------------------------
-SCRIPT_DIR = Path(__file__).resolve().parent
+SCRIPT_DIR   = Path(__file__).resolve().parent      # .../dashboard
+PROJECT_ROOT = SCRIPT_DIR.parent                    # repo root
+
 DATA_PATH = SCRIPT_DIR / "data" / "GridScout_Final.gpkg"
-LOG_PATH = SCRIPT_DIR / "data" / "outreach_log.csv"
+LOG_PATH  = SCRIPT_DIR / "data" / "outreach_log.csv"
+LOGO_PATH = PROJECT_ROOT / "assets" / "logo.png"       # <- your new logo
 
 # ----------------------------------------------------------------------------
-# Streamlit config
+# Streamlit page config
 # ----------------------------------------------------------------------------
 st.set_page_config(page_title="GridScoutAI Dashboard", layout="wide")
 
@@ -29,8 +32,11 @@ gdf = load_parcels(DATA_PATH)
 # ----------------------------------------------------------------------------
 # Sidebar – logo & filters
 # ----------------------------------------------------------------------------
-st.sidebar.image("https://i.imgur.com/3ZQ3Z6N.png", width=180)
-st.sidebar.title("GridScout AI")
+if LOGO_PATH.exists():
+    st.sidebar.image(LOGO_PATH, width=160)
+else:
+    st.sidebar.title("GridScout AI")  # fallback title if logo missing
+
 st.sidebar.write("Camden County demo – score & filter parcels for clean‑energy siting.")
 
 score_min, score_max = int(gdf.SCORE_TOTA.min()), int(gdf.SCORE_TOTA.max())
@@ -92,6 +98,10 @@ else:
             tooltip={"text": "PIN: {PAMS_PIN}\nScore: {SCORE_TOTA}\nLand Use: {lu23catn}"},
         )
     )
+
+    # Simple legend under map
+    st.markdown(
+        "**Color Legend:** 🟥 Low  |  🟡 Medium  |  🟢 High")
 
 # ----------------------------------------------------------------------------
 # Parcel table + CSV download
